@@ -1,10 +1,10 @@
 document.getElementById('fetchButton').addEventListener('click', () => {
-    fetch('https://randomuser.me/api/?results=5')  // Отримуємо 5 користувачів
+    fetch('https://randomuser.me/api/?results=5')
         .then(response => response.json())
         .then(data => {
             const users = data.results;
             const userInfoContainer = document.getElementById('userInfoContainer');
-            userInfoContainer.innerHTML = ''; // Очищаємо контейнер перед новим заповненням
+            userInfoContainer.innerHTML = '';
 
             users.forEach(user => {
                 const picture = `<img src="${user.picture.large}" alt="User Picture">`;
@@ -13,7 +13,7 @@ document.getElementById('fetchButton').addEventListener('click', () => {
                 const postcode = user.location.postcode;
                 const phone = user.phone;
 
-                // Додаємо новий блок для кожного користувача
+
                 const card = `
                     <div class="user-card">
                         ${picture}
@@ -27,7 +27,7 @@ document.getElementById('fetchButton').addEventListener('click', () => {
                 userInfoContainer.innerHTML += card;
             });
 
-            // Показуємо повідомлення про успіх
+
             document.getElementById('successMessage').style.display = 'block';
         })
         .catch(error => console.error('Error fetching data:', error));
